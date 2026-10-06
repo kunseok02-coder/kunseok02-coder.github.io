@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>일정 자동화 비서</title>
+<style>
+  :root {
+    --bg: #faf9f6;
+    --surface: #ffffff;
+    --border: #e4e0d8;
+    --text: #2b2a27;
+    --text-muted: #6b675f;
+    --accent: #3a6b52;
+    --accent-soft: #e7f0ea;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, system-ui, "Noto Sans KR", sans-serif;
+    line-height: 1.65;
+    padding-inline: 20px;
+    padding-block: 32px;
+  }
+  main { max-width: 680px; margin: 0 auto; }
+  header.top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    align-items: baseline;
+    margin-bottom: 36px;
+  }
+  header.top h1 { font-size: 1.3rem; margin: 0; letter-spacing: -0.01em; }
+  nav.top { display: flex; gap: 14px; font-size: 0.85rem; }
+  nav.top a { color: var(--text-muted); text-decoration: none; border-bottom: 1px solid transparent; }
+  nav.top a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+  section { padding-block: 28px; border-top: 1px solid var(--border); scroll-margin-top: 20px; }
+  section:first-of-type { border-top: none; padding-top: 0; }
+  .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin: 0 0 8px;
+  }
+  h2 { font-size: 1.25rem; margin: 0 0 14px; letter-spacing: -0.01em; }
+  h3 { font-size: 1rem; margin: 20px 0 8px; }
+  p { margin: 0 0 12px; color: var(--text); max-width: 60ch; }
+  p.muted { color: var(--text-muted); font-size: 0.92rem; }
+  ul { margin: 0 0 12px; padding-left: 20px; }
+  li { margin-bottom: 6px; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-block: 14px;
+  }
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    margin-top: 32px;
+    padding-top: 16px;
+  }
+  code {
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-size: 0.88em;
+  }
+</style>
+</head>
+<body>
+<main>
+  <header class="top">
+    <h1>일정 자동화 비서</h1>
+    <nav class="top">
+      <a href="#home">소개</a>
+      <a href="#privacy">개인정보처리방침</a>
+      <a href="#terms">이용약관</a>
+    </nav>
+  </header>
+
+  <section id="home">
+    <p class="eyebrow">Home</p>
+    <h2>개인용 구글 캘린더 자동화 도구</h2>
+    <p>이 애플리케이션은 단 한 명의 사용자(개발자 본인, <code>kunseok02@gmail.com</code>)가 자신의 구글 캘린더 일정을 명령 한 줄로 등록·수정·삭제·조회하기 위해 만든 개인용 자동화 도구입니다.</p>
+    <p class="muted">외부에 배포되거나 다른 사용자에게 제공되지 않으며, 오직 개발자 본인의 계정에만 연동됩니다.</p>
+    <div class="card">
+      <h3>하는 일</h3>
+      <ul>
+        <li>자연어 명령에서 날짜·시간·장소를 추출해 구글 캘린더 일정으로 등록</li>
+        <li>등록된 일정을 분류(회사 내부/개인/장기 등)에 따라 색상으로 구분</li>
+        <li>요청에 따라 기존 일정을 수정하거나 삭제</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="privacy">
+    <p class="eyebrow">Privacy Policy</p>
+    <h2>개인정보처리방침</h2>
+    <p>본 도구는 Google OAuth 2.0을 통해 <strong>구글 캘린더 일정 데이터(이벤트 제목, 시간, 설명, 장소)</strong>에만 접근합니다. 이메일 본문, 연락처, 위치 정보 등 캘린더 범위(scope) 밖의 데이터는 수집하지 않습니다.</p>
+    <h3>수집하는 정보</h3>
+    <ul>
+      <li>구글 캘린더 일정 데이터 (제목, 시작/종료 시간, 장소, 설명, 색상)</li>
+      <li>OAuth 인증 토큰 (Refresh Token) — 개발자 본인 로컬 환경에만 저장</li>
+    </ul>
+    <h3>저장 및 공유</h3>
+    <p>수집된 데이터와 인증 토큰은 개발자 개인 컴퓨터의 로컬 설정 파일에만 저장되며, 어떤 제3자 서버나 외부 서비스로도 전송·공유되지 않습니다.</p>
+    <h3>사용 목적</h3>
+    <p>오직 개발자 본인의 일정 등록·수정·삭제·조회 자동화를 위한 목적으로만 사용됩니다.</p>
+    <h3>보관 기간</h3>
+    <p>인증 토큰은 사용자가 직접 연동을 해제하거나 삭제할 때까지 로컬에 보관됩니다.</p>
+    <h3>문의</h3>
+    <p>문의: <code>kunseok02@gmail.com</code></p>
+  </section>
+
+  <section id="terms">
+    <p class="eyebrow">Terms of Service</p>
+    <h2>이용약관</h2>
+    <p>본 도구는 <strong>개발자 본인만을 위한 개인용 자동화 소프트웨어</strong>이며, 일반 공개 서비스가 아닙니다.</p>
+    <ul>
+      <li>본 도구는 상업적 목적 없이 개인 업무 자동화를 위해 제작되었습니다.</li>
+      <li>개발자 본인 외의 제3자에게 계정 접근 권한을 부여하거나 재배포하지 않습니다.</li>
+      <li>본 도구의 사용으로 발생하는 모든 책임은 개발자 본인에게 있으며, 별도의 보증을 제공하지 않습니다.</li>
+      <li>구글 캘린더 서비스 자체의 약관은 Google의 서비스 약관을 따릅니다.</li>
+    </ul>
+    <div class="meta-row">
+      <span>연락처: kunseok02@gmail.com</span>
+      <span>최종 갱신: 2026-10-06</span>
+    </div>
+  </section>
+</main>
+</body>
+</html>
